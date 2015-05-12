@@ -2,25 +2,40 @@
   <h1>Here are the questions for <%= @survey.title() %></h1>
   <ul>
     <% @survey.questions().each() do |question| %>
-      <li><a href='/questions/<%= question.id() %>/edit'><%= question.description() %></a></li>
+      <li><a href='/surveys/<%=@survey.id()%>/questions/<%= question.id() %>'><%= question.description() %></a></li>
     <% end %>
   </ul>
 <% else %>
   <h1>There are no questions yet.</h1>
 <% end %>
 
+<br>
+<br>
+<h2>Add a question and the availible answers to this survey</h2>
+
 <form action="/surveys/<%=@survey.id()%>" method="post">
   <label for="description">Question description</label>
   <input id="description" name="description" type="text">
+  <br>
+  <br>
+  <label for="first_answer">First answer</label>
+  <input id="first_answer" name="first_answer" type="text">
 
-  <label for="answer">Correct answer (integers only please)</label>
-  <input id="answer" name="answer" type="text">
+  <label for="second_answer">Second answer</label>
+  <input id="second_answer" name="second_answer" type="text">
+  <br>
+  <label for="third_answer">Third answer</label>
+  <input id="third_answer" name="third_answer" type="text">
 
+  <label for="fourth_answer">Fourth answer</label>
+  <input id="fourth_answer" name="fourth_answer" type="text">
+  <br>
+  <br>
   <input id="survey_id" type="hidden" name="survey_id" value="<%@survey.id%>">
   <button type="submit">Add Question</button>
 </form>
 
-
+<br>
 <div class="container">
   <a href="/surveys">Back To All Surveys</a>
 </div>

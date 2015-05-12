@@ -1,0 +1,19 @@
+<%@iterate = 0 %>
+<% if @survey.questions().any?() %>
+  <h1>Here are the questions for <%= @survey.title() %></h1>
+  <form action="/take_surveys/<%=@survey.id%>/results" method='get'>
+  <ol>
+    <% @survey.questions().each() do |question| %>
+      <li><%= question.description() %></li>
+      <input type="radio" id="choice_1" name="choice<%=@iterate%>" value="1"checked="checked" /><label for ="choice_1"><%=question.choice_1%></label>
+      <input type="radio" id="choice_2" name="choice<%=@iterate%>" value="2"checked="unchecked" /><label for ="choice_2"><%=question.choice_2%></label>
+      <input type="radio" id="choice_3" name="choice<%=@iterate%>" value="3"checked="unchecked" /><label for ="choice_3"><%=question.choice_3%></label>
+      <input type="radio" id="choice_4" name="choice<%=@iterate%>" value="4"checked="unchecked" /><label for ="choice_4"><%=question.choice_4%></label>
+      <%@iterate = @iterate + 1 %>
+    <% end %>
+  </ol>
+  <button type="submit">Submit your survey</button>
+  </form>
+<% else %>
+  <h1>There are no questions yet.</h1>
+<% end %>

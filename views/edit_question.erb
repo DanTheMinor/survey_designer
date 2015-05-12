@@ -1,0 +1,41 @@
+<h1>Update <%=@question.description() %></h1>
+
+<h3>First Answer: <%= @question.choice_1() %></h3>
+<h3>Second Answer: <%= @question.choice_2() %></h3>
+<h3>Third Answer: <%= @question.choice_3() %></h3>
+<h3>Fourth Answer: <%= @question.choice_4() %></h3>
+
+
+
+
+<form action="/surveys/<%= @survey.id()%>/questions/<%=@question.id%>" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for="description">Change your Question:</label>
+  <input id="description" name="description" type="text">
+  <br>
+  <label for="first_answer">First answer</label>
+  <input id="first_answer" name="first_answer" type="text">
+
+  <label for="second_answer">Second answer</label>
+  <input id="second_answer" name="second_answer" type="text">
+  <br>
+  <label for="third_answer">Third answer</label>
+  <input id="third_answer" name="third_answer" type="text">
+
+  <label for="fourth_answer">Fourth answer</label>
+  <input id="fourth_answer" name="fourth_answer" type="text">
+  <br>
+  <br>
+
+  <button class="submit">Update Question</button>
+</form>
+
+
+<br>
+<form action="/surveys/<%= @survey.id() %>/questions/<%=@question.id%>" method="post">
+
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete Question</button>
+</form>
