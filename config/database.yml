@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: survey_designer_development
+
+test:
+  adapter: postgresql
+  database: survey_designer_test
